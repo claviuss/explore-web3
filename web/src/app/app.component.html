@@ -1,0 +1,32 @@
+<div>
+  <div *ngIf="!metamaskAvaialble">MetaMask was not found. Please try again using a browser that supports MetaMask. <a
+      href="https://metamask.io/" target="_blank">metamask.io</a>
+  </div>
+
+  <div *ngIf="metamaskAvaialble">
+    <button (click)="connectToMetamask()" *ngIf="!(loggedIn$ | async); ">
+      <img src="assets/metamask.png" alt="*">
+      Login using metamask
+    </button>
+  </div>
+</div>
+
+
+<div>
+  <div *ngIf="!phantomAvaialble">Phantom was not found. Please try again using a browser that supports Phantom. <a
+      href="https://phantom.app/" target="_blank">phantom.app</a></div>
+
+  <div *ngIf="phantomAvaialble">
+    <button (click)="connectToPhantom()" *ngIf="!(loggedIn$ | async);">
+      <img src="assets/phantom.png" alt="*">
+      Login using Phantom
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="loggedIn$ | async">
+  <h1>Welcome!</h1>
+
+  <div>{{this.walletAddress}}</div>
+</div>
